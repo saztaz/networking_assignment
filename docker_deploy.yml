@@ -1,0 +1,17 @@
+---
+- name: Deploy Apache Docker Container
+  hosts: target_hosts
+  become: true
+  tasks:
+    - name: Pull Apache Docker image
+      docker_image:
+        name: httpd
+        state: present
+
+    - name: Run Apache Docker container
+      docker_container:
+        name: apache_container
+        image: httpd
+        state: started
+        ports:
+          - "80:80"
