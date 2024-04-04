@@ -1,6 +1,6 @@
 ---
 - name: Deploy Apache Docker Container
-  hosts: target_hosts
+  hosts: local_hosts
   become: true
   tasks:
     - name: Pull Apache Docker image
@@ -14,4 +14,4 @@
         image: httpd
         state: started
         ports:
-          - "80:80"
+          - "8080"
